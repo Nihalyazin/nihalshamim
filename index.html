@@ -24,7 +24,20 @@
 :root[data-theme="dark"]{ --bg:#121214; --bg2:#1a1a1d; --card:#1d1e21; --line:rgba(237,234,227,.12); --ink:#edeae3; --ink-dim:#a9a69f; --gold:#c9a24b; --teal:#4a8fa0; }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth; scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55; position:relative;}
+
+/* Background Canvas Animation */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
 h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0 0 .4em;letter-spacing:-.01em;}
 a{color:inherit;}
 .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
@@ -34,11 +47,22 @@ nav .name{font-family:var(--serif);font-size:1.05rem;}
 nav .links{display:flex;gap:22px;font-size:.88rem;color:var(--ink-dim);}
 nav .links a{text-decoration:none;}
 nav .links a:hover{color:var(--gold);}
+
 .hero{padding:76px 0 54px;border-bottom:1px solid var(--line);}
+.hero-grid{display:grid;grid-template-columns:1fr 240px;gap:36px;align-items:center;}
+@media (max-width:768px){.hero-grid{grid-template-columns:1fr;text-align:center;}}
 .hero .kicker{color:var(--teal);font-size:.95rem;margin-bottom:14px;}
-.hero h1{font-size:clamp(2.3rem,6vw,3.4rem);line-height:1.05;max-width:12ch;}
+.hero h1{font-size:clamp(2.3rem,5vw,3.4rem);line-height:1.05;}
 .hero p{max-width:56ch;color:var(--ink-dim);font-size:1.08rem;margin-top:14px;}
+@media (max-width:768px){.hero p{margin-left:auto;margin-right:auto;}}
+
+.hero-photo-wrap{position:relative;width:100%;max-width:240px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:0 10px 30px rgba(0,0,0,0.3);}
+@media (max-width:768px){.hero-photo-wrap{margin:24px auto 0;}}
+.hero-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+
 .contact-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:.92rem;color:var(--ink-dim);}
+@media (max-width:768px){.contact-row{justify-content:center;}}
+
 section{padding:56px 0;border-bottom:1px solid var(--line);}
 section:last-of-type{border-bottom:none;}
 .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;}
@@ -87,6 +111,9 @@ footer a{color:var(--gold);text-decoration:none;}
 </head>
 <body>
 
+<!-- Background Galaxy & Tech Particle Animation Canvas -->
+<canvas id="bg-canvas"></canvas>
+
 <nav><div class="wrap">
   <div class="name">Nihal Yazin Shamim</div>
   <div class="links">
@@ -95,13 +122,21 @@ footer a{color:var(--gold);text-decoration:none;}
 </div></nav>
 
 <header class="hero"><div class="wrap">
-  <div class="kicker">Computing &amp; Information Systems · Youngstown, OH</div>
-  <h1>Data-driven builder with a videographer's eye.</h1>
-  <p>M.S. Computing &amp; Information Systems candidate who works comfortably across data analysis, web development, and hands-on event videography — from campus concerts to motorsport coverage.</p>
-  <div class="contact-row">
-    <span>3878 Francesca Dr, Canfield, OH 44406</span>
-    <span>330-787-5048</span>
-    <span>nyshamim@student.ysu.edu</span>
+  <div class="hero-grid">
+    <div>
+      <div class="kicker">Computing &amp; Information Systems · Youngstown, OH</div>
+      <h1>Data-driven builder with a videographer's eye.</h1>
+      <p>M.S. Computing &amp; Information Systems candidate who works comfortably across data analysis, web development, and hands-on event videography — from campus concerts to motorsport coverage.</p>
+      <div class="contact-row">
+        <span>3878 Francesca Dr, Canfield, OH 44406</span>
+        <span>330-787-5048</span>
+        <span>nyshamim@student.ysu.edu</span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <!-- Replace src with your photo file path -->
+      <img src="photo.jpg" alt="Nihal Yazin Shamim">
+    </div>
   </div>
 </div></header>
 
@@ -133,7 +168,7 @@ footer a{color:var(--gold);text-decoration:none;}
     </ul>
     <div class="xp-media">
       <figure>
-        <video controls preload="none" poster="/_blob/d1290458d16b41026fdf0ef419c2b363" src="/_blob/51dc9f7ff5c8076bfff357f2d9270d42"></video>
+        <video autoplay muted loop playsinline preload="none" poster="/_blob/d1290458d16b41026fdf0ef419c2b363" src="/_blob/51dc9f7ff5c8076bfff357f2d9270d42"></video>
         <figcaption>Edit sample — Armani White concert recap, Penguin Productions</figcaption>
       </figure>
     </div>
@@ -204,15 +239,15 @@ footer a{color:var(--gold);text-decoration:none;}
   <div class="section-head"><h2>Video &amp; Event Reel</h2><span>Shot &amp; edited by Nihal</span></div>
   <div class="reel-grid">
     <div class="reel-card wide">
-      <video controls preload="none" poster="/_blob/d1290458d16b41026fdf0ef419c2b363" src="/_blob/51dc9f7ff5c8076bfff357f2d9270d42"></video>
+      <video autoplay muted loop playsinline preload="none" poster="/_blob/d1290458d16b41026fdf0ef419c2b363" src="/_blob/51dc9f7ff5c8076bfff357f2d9270d42"></video>
       <div class="reel-body"><h3>Penguin Productions — Armani White Concert Recap</h3><p>Live-event coverage and edit for Youngstown State's Penguin Productions, cut for social and promotional release.</p></div>
     </div>
     <div class="reel-card portrait">
-      <video controls preload="none" poster="/_blob/3276b1986011177fe44512ecccf069b2" src="/_blob/a3a1138ab2b91fb0f134fc3359edd721"></video>
+      <video autoplay muted loop playsinline preload="none" poster="/_blob/3276b1986011177fe44512ecccf069b2" src="/_blob/a3a1138ab2b91fb0f134fc3359edd721"></video>
       <div class="reel-body"><h3>DTS Racing — Motorsport Highlight Edit</h3><p>Trackside coverage and pit-crew footage cut into a vertical highlight reel for DTS Racing.</p></div>
     </div>
     <div class="reel-card portrait">
-      <video controls preload="none" poster="/_blob/92b85342e27ee669e39e9f7388a988ec" src="/_blob/43a2b776f49a94a285b9d2475073bd87"></video>
+      <video autoplay muted loop playsinline preload="none" poster="/_blob/92b85342e27ee669e39e9f7388a988ec" src="/_blob/43a2b776f49a94a285b9d2475073bd87"></video>
       <div class="reel-body"><h3>Ducati Panigale V2 — Cinematic Feature</h3><p>Self-shot and edited vertical feature, framed close on the bike with a passing helicopter adding motion to the background.</p></div>
     </div>
   </div>
@@ -234,6 +269,83 @@ footer a{color:var(--gold);text-decoration:none;}
 <footer>
   Nihal Yazin Shamim · <a href="mailto:nyshamim@student.ysu.edu">nyshamim@student.ysu.edu</a> · 330-787-5048
 </footer>
+
+<script>
+/* Minimal Tech / Galaxy Particle Background Animation with Scroll Fade */
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Create subtle stars/nodes
+const particleCount = Math.min(window.innerWidth > 768 ? 60 : 30, 80);
+for (let i = 0; i < particleCount; i++) {
+  particles.push({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+    radius: Math.random() * 1.5 + 0.5
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  
+  // Draw subtle particles and connecting lines
+  ctx.fillStyle = 'rgba(201, 162, 75, 0.35)'; // gold / teal accent
+  ctx.strokeStyle = 'rgba(74, 143, 160, 0.12)';
+  ctx.lineWidth = 1;
+
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    if (p.y < 0) p.y = height;
+    if (p.y > height) p.y = 0;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Connect nearby nodes
+    for (let j = i + 1; j < particles.length; j++) {
+      let p2 = particles[j];
+      let dx = p.x - p2.x;
+      let dy = p.y - p2.y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Fade background opacity as user scrolls down
+window.addEventListener('scroll', () => {
+  let scrollTop = window.scrollY;
+  let maxScroll = 800;
+  let opacity = Math.max(0.1, 1 - (scrollTop / maxScroll));
+  canvas.style.opacity = opacity;
+});
+</script>
 
 </body>
 </html>
