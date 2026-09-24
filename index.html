@@ -1,1222 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Nihal Yazin Shamim - Computing and Information Systems student, AI Developer, Photographer and Videographer">
-
-    <title>Nihal Yazin Shamim | Portfolio</title>
-
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b0b0b;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(10px);
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
-        }
-
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-
-        nav ul li a:hover {
-            color: #aaa;
-        }
-
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 10% 80px;
-            background:
-                radial-gradient(circle at 80% 30%, #252525, transparent 35%),
-                #0b0b0b;
-        }
-
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-
-        .hero-small {
-            color: #aaa;
-            font-size: 16px;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-
-
-        .hero h1 {
-            font-size: clamp(50px, 8vw, 100px);
-            line-height: 0.95;
-            margin-bottom: 25px;
-        }
-
-
-        .hero h1 span {
-            color: #888;
-        }
-
-
-        .hero p {
-            color: #bbb;
-            font-size: 20px;
-            max-width: 700px;
-            margin-bottom: 35px;
-        }
-
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-
-        .button {
-            display: inline-block;
-            padding: 13px 24px;
-            border: 1px solid white;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: 0.3s;
-        }
-
-
-        .button:hover {
-            background: white;
-            color: black;
-        }
-
-
-        .button.secondary {
-            border-color: #444;
-            color: #bbb;
-        }
-
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        section {
-            padding: 100px 10%;
-        }
-
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 45px;
-        }
-
-
-        .section-title span {
-            color: #666;
-        }
-
-
-        .gray-section {
-            background: #111;
-        }
-
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-            max-width: 900px;
-            color: #bbb;
-            font-size: 18px;
-        }
-
-
-        .about strong {
-            color: white;
-        }
-
-
-        /* =========================
-           EDUCATION
-        ========================= */
-
-        .timeline {
-            max-width: 900px;
-        }
-
-
-        .timeline-item {
-            border-left: 2px solid #444;
-            padding: 0 0 40px 30px;
-            position: relative;
-        }
-
-
-        .timeline-item::before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            left: -6px;
-            top: 7px;
-        }
-
-
-        .timeline-item h3 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-
-        .timeline-item .date {
-            color: #888;
-            margin-bottom: 12px;
-        }
-
-
-        .timeline-item p {
-            color: #aaa;
-        }
-
-
-        /* =========================
-           EXPERIENCE
-        ========================= */
-
-        .experience-card {
-            max-width: 1000px;
-            background: #151515;
-            padding: 35px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border: 1px solid #252525;
-        }
-
-
-        .experience-card h3 {
-            font-size: 25px;
-            margin-bottom: 5px;
-        }
-
-
-        .company {
-            color: #888;
-            margin-bottom: 20px;
-        }
-
-
-        .experience-card ul {
-            padding-left: 20px;
-            color: #aaa;
-        }
-
-
-        .experience-card li {
-            margin-bottom: 8px;
-        }
-
-
-        /* =========================
-           CURRENT PROJECT
-        ========================= */
-
-        .featured-project {
-            background: linear-gradient(135deg, #191919, #0d0d0d);
-            border: 1px solid #333;
-            padding: 45px;
-            border-radius: 20px;
-            max-width: 1000px;
-        }
-
-
-        .project-label {
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-
-        .featured-project h3 {
-            font-size: 34px;
-            margin-bottom: 20px;
-        }
-
-
-        .featured-project p {
-            color: #aaa;
-            margin-bottom: 20px;
-        }
-
-
-        .project-list {
-            padding-left: 20px;
-            color: #aaa;
-        }
-
-
-        .project-list li {
-            margin-bottom: 10px;
-        }
-
-
-        .date-badge {
-            display: inline-block;
-            border: 1px solid #444;
-            padding: 7px 14px;
-            border-radius: 20px;
-            color: #aaa;
-            margin-top: 20px;
-        }
-
-
-        /* =========================
-           PROJECT GRID
-        ========================= */
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-
-        .project-card {
-            background: #151515;
-            border: 1px solid #252525;
-            padding: 30px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #555;
-        }
-
-
-        .project-card h3 {
-            font-size: 23px;
-            margin-bottom: 15px;
-        }
-
-
-        .project-card p {
-            color: #aaa;
-        }
-
-
-        /* =========================
-           SKILLS
-        ========================= */
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            max-width: 1000px;
-        }
-
-
-        .skill {
-            border: 1px solid #333;
-            padding: 10px 18px;
-            border-radius: 25px;
-            color: #bbb;
-            transition: 0.3s;
-        }
-
-
-        .skill:hover {
-            background: white;
-            color: black;
-        }
-
-
-        /* =========================
-           PHOTOGRAPHY
-        ========================= */
-
-        .photo-intro {
-            color: #aaa;
-            max-width: 800px;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-
-        .photo-box {
-            border: 1px dashed #444;
-            min-height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            border-radius: 15px;
-        }
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact-box {
-            max-width: 700px;
-        }
-
-
-        .contact-box p {
-            color: #aaa;
-            margin-bottom: 12px;
-            font-size: 18px;
-        }
-
-
-        .contact-box a {
-            color: white;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid #222;
-            color: #666;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            section {
-                padding: 75px 7%;
-            }
-
-            .hero {
-                padding: 120px 7% 70px;
-            }
-
-            .hero h1 {
-                font-size: 58px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .projects {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-project {
-                padding: 30px;
-            }
-
-            .featured-project h3 {
-                font-size: 27px;
-            }
-
-            .section-title {
-                font-size: 35px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nihal Yazin Shamim — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#121214; --bg2:#1a1a1d; --card:#1d1e21; --line:rgba(237,234,227,.12);
+  --ink:#edeae3; --ink-dim:#a9a69f; --gold:#c9a24b; --teal:#4a8fa0;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f6f4ef; --bg2:#efebe2; --card:#fff; --line:rgba(30,28,22,.12);
+    --ink:#201e19; --ink-dim:#6b675e; --gold:#a37a25; --teal:#2f6b78;
+  }
+}
+:root[data-theme="dark"]{ --bg:#121214; --bg2:#1a1a1d; --card:#1d1e21; --line:rgba(237,234,227,.12); --ink:#edeae3; --ink-dim:#a9a69f; --gold:#c9a24b; --teal:#4a8fa0; }
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0 0 .4em;letter-spacing:-.01em;}
+a{color:inherit;}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+nav .name{font-family:var(--serif);font-size:1.05rem;}
+nav .links{display:flex;gap:22px;font-size:.88rem;color:var(--ink-dim);}
+nav .links a{text-decoration:none;}
+nav .links a:hover{color:var(--gold);}
+.hero{padding:76px 0 54px;border-bottom:1px solid var(--line);}
+.hero .kicker{color:var(--teal);font-size:.95rem;margin-bottom:14px;}
+.hero h1{font-size:clamp(2.3rem,6vw,3.4rem);line-height:1.05;max-width:12ch;}
+.hero p{max-width:56ch;color:var(--ink-dim);font-size:1.08rem;margin-top:14px;}
+.contact-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:.92rem;color:var(--ink-dim);}
+section{padding:56px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;}
+.section-head span{font-size:.85rem;color:var(--ink-dim);}
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media (max-width:640px){.skill-grid{grid-template-columns:1fr;}}
+.skill-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 24px;}
+.skill-card h3{font-size:1.05rem;color:var(--gold);}
+.skill-card p{margin:0;color:var(--ink-dim);font-size:.95rem;}
+.xp{margin-bottom:34px;}
+.xp:last-child{margin-bottom:0;}
+.xp-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.xp-head strong{font-size:1.05rem;}
+.xp-head time{color:var(--ink-dim);font-size:.88rem;white-space:nowrap;}
+.xp-role{color:var(--teal);font-size:.92rem;margin-bottom:10px;}
+.xp ul{margin:0;padding-left:1.1em;color:var(--ink-dim);font-size:.95rem;}
+.xp li{margin-bottom:5px;}
+.xp-media{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+@media (max-width:640px){.xp-media{grid-template-columns:1fr;}}
+.xp-media figure{margin:0;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:#000;}
+.xp-media video,.xp-media img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;}
+.xp-media figcaption{padding:9px 12px;font-size:.82rem;color:var(--ink-dim);border-top:1px solid var(--line);}
+.proj-grid{display:grid;grid-template-columns:1fr;gap:18px;}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px 26px;}
+.proj .tag{color:var(--ink-dim);font-size:.82rem;margin-bottom:6px;}
+.proj h3{font-size:1.12rem;margin-bottom:8px;}
+.proj ul{margin:0;padding-left:1.1em;color:var(--ink-dim);font-size:.93rem;}
+.proj li{margin-bottom:4px;}
+.reel-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media (max-width:640px){.reel-grid{grid-template-columns:1fr;}}
+.reel-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.reel-card.wide{grid-column:1/-1;}
+.reel-card video{width:100%;display:block;background:#000;aspect-ratio:16/9;}
+.reel-card.portrait video{aspect-ratio:9/16;max-height:70vh;margin:0 auto;}
+.reel-body{padding:16px 18px;}
+.reel-body h3{font-size:1rem;margin-bottom:4px;}
+.reel-body p{margin:0;color:var(--ink-dim);font-size:.9rem;}
+.edu{margin-bottom:22px;}
+.edu:last-child{margin-bottom:0;}
+.edu strong{font-size:1.02rem;}
+.edu .where{color:var(--ink-dim);font-size:.9rem;}
+footer{padding:40px 0 calc(50px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--ink-dim);font-size:.88rem;}
+footer a{color:var(--gold);text-decoration:none;}
+.note{font-size:.82rem;color:var(--ink-dim);margin-top:10px;}
+</style>
 </head>
-
-
 <body>
 
+<nav><div class="wrap">
+  <div class="name">Nihal Yazin Shamim</div>
+  <div class="links">
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#reel">Reel</a><a href="#education">Education</a>
+  </div>
+</div></nav>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<header class="hero"><div class="wrap">
+  <div class="kicker">Computing &amp; Information Systems · Youngstown, OH</div>
+  <h1>Data-driven builder with a videographer's eye.</h1>
+  <p>M.S. Computing &amp; Information Systems candidate who works comfortably across data analysis, web development, and hands-on event videography — from campus concerts to motorsport coverage.</p>
+  <div class="contact-row">
+    <span>3878 Francesca Dr, Canfield, OH 44406</span>
+    <span>330-787-5048</span>
+    <span>nyshamim@student.ysu.edu</span>
+  </div>
+</div></header>
 
-<nav>
+<section id="about"><div class="wrap">
+  <div class="section-head"><h2>Skills</h2></div>
+  <div class="skill-grid">
+    <div class="skill-card"><h3>Programming Languages</h3><p>Python, C++, JavaScript, SQL</p></div>
+    <div class="skill-card"><h3>Web Development</h3><p>HTML, CSS, Responsive Web Design, CRUD Operations</p></div>
+    <div class="skill-card"><h3>Databases</h3><p>Database Design, Entity-Relationship Modeling</p></div>
+    <div class="skill-card"><h3>Data Science &amp; Analysis</h3><p>Data Cleaning, Exploratory Data Analysis (EDA), Statistical Testing (Chi-Square), Data Visualization</p></div>
+    <div class="skill-card"><h3>AI-Assisted Tools</h3><p>AI-Assisted Data Analysis, Gradio</p></div>
+    <div class="skill-card"><h3>Creative &amp; Media Production</h3><p>Event Videography, Video Editing, Highlight-Reel Production, Photography, Social Content Creation</p></div>
+  </div>
+</div></section>
 
-    <div class="logo">
-        Nihal.
-    </div>
+<section id="experience"><div class="wrap">
+  <div class="section-head"><h2>Experience</h2></div>
 
+  <div class="xp">
+    <div class="xp-head"><strong>Youngstown State University — Penguin Productions</strong><time>Sep 2025 – Present</time></div>
+    <div class="xp-role">Marketing &amp; Digital Strategy Team Member</div>
     <ul>
-
-        <li>
-            <a href="#about">About</a>
-        </li>
-
-        <li>
-            <a href="#education">Education</a>
-        </li>
-
-        <li>
-            <a href="#experience">Experience</a>
-        </li>
-
-        <li>
-            <a href="#projects">Projects</a>
-        </li>
-
-        <li>
-            <a href="#skills">Skills</a>
-        </li>
-
-        <li>
-            <a href="#contact">Contact</a>
-        </li>
-
+      <li>Develop and implement digital marketing strategies to increase campus event attendance and audience engagement.</li>
+      <li>Shot and edited on-campus event coverage, including recap footage from the Armani White concert, for social and promotional use.</li>
+      <li>Create and manage promotional content across social media platforms to expand brand visibility.</li>
+      <li>Analyze audience engagement metrics and optimize campaigns to improve outreach performance.</li>
+      <li>Collaborate with event planning and production teams to design targeted marketing campaigns.</li>
+      <li>Support brand growth initiatives by identifying trends and improving digital presence.</li>
     </ul>
-
-</nav>
-
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<header class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-small">
-            HELLO, I'M
-        </div>
-
-        <h1>
-            Nihal<br>
-            <span>Yazin Shamim.</span>
-        </h1>
-
-        <p>
-            Computing & Information Systems graduate student,
-            AI Developer, Photographer and Videographer.
-        </p>
-
-
-        <div class="buttons">
-
-            <a href="#projects" class="button">
-                View My Work
-            </a>
-
-            <a href="#contact" class="button secondary">
-                Contact Me
-            </a>
-
-        </div>
-
+    <div class="xp-media">
+      <figure>
+        <video controls preload="none" poster="/_blob/d1290458d16b41026fdf0ef419c2b363" src="/_blob/51dc9f7ff5c8076bfff357f2d9270d42"></video>
+        <figcaption>Edit sample — Armani White concert recap, Penguin Productions</figcaption>
+      </figure>
     </div>
+  </div>
 
-</header>
+  <div class="xp">
+    <div class="xp-head"><strong>Youngstown State University — Graduate Admissions Office</strong><time>Sep 2025 – Present</time></div>
+    <div class="xp-role">Graduate Admissions Assistant</div>
+    <ul>
+      <li>Process and review graduate applications to ensure completeness and accuracy.</li>
+      <li>Verify and evaluate academic transcripts and supporting documents.</li>
+      <li>Upload and manage transcripts and applicant records within the admissions system.</li>
+      <li>Attend and handle incoming calls and emails from prospective and current students.</li>
+      <li>Resolve application-related issues and provide guidance on admission requirements.</li>
+      <li>Coordinate with internal departments to ensure timely application processing.</li>
+    </ul>
+  </div>
 
+  <div class="xp">
+    <div class="xp-head"><strong>Tenzo Tech</strong>, Ernakulam, Kerala<time>Jul 2023 – Feb 2024</time></div>
+    <div class="xp-role">AI Developer Intern</div>
+    <ul>
+      <li>Developed websites and implemented automated user-response functionalities.</li>
+      <li>Analyzed and processed large datasets using statistical tools and techniques.</li>
+      <li>Assisted in designing AI-driven solutions to improve user interaction.</li>
+      <li>Prioritized and organized tasks to meet project deadlines efficiently.</li>
+    </ul>
+  </div>
+</div></section>
 
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-    <h2 class="section-title">
-        About <span>Me</span>
-    </h2>
-
-    <div class="about">
-
-        <p>
-            Hi, I'm <strong>Nihal Yazin Shamim</strong>.
-            I am a graduate student pursuing a Master of Science
-            in Computing and Information Systems at
-            Youngstown State University.
-        </p>
-
-        <br>
-
-        <p>
-            My interests include artificial intelligence,
-            data analysis, web development, technology,
-            photography and videography.
-        </p>
-
-        <br>
-
-        <p>
-            I enjoy working on technology projects that combine
-            programming, data and creative problem solving.
-            I also have professional experience in AI development,
-            graduate admissions and digital marketing.
-        </p>
-
+<section id="projects"><div class="wrap">
+  <div class="section-head"><h2>Academic Projects</h2></div>
+  <div class="proj-grid">
+    <div class="proj">
+      <div class="tag">Youngstown State University · Aug 2026 – Dec 2026 · Current</div>
+      <h3>AI-Assisted Blood Type &amp; COVID-19 Data Analysis</h3>
+      <ul>
+        <li>Designed a data-analysis pipeline investigating potential associations between ABO/Rh blood groups and COVID-19 status using a de-identified public dataset.</li>
+        <li>Performed data cleaning, exploratory data analysis, and subset creation ahead of statistical comparison.</li>
+        <li>Applied chi-square testing to compare COVID-positive proportions across blood groups while accounting for confounders.</li>
+        <li>Used AI-assisted workflows to generate and validate data-processing code and interpret statistical output.</li>
+        <li>Built a private, local Gradio interface to visualize blood-group/COVID-19 comparisons.</li>
+      </ul>
     </div>
-
-</section>
-
-
-
-<!-- =========================
-     EDUCATION
-========================= -->
-
-<section id="education" class="gray-section">
-
-    <h2 class="section-title">
-        Education
-    </h2>
-
-
-    <div class="timeline">
-
-
-        <div class="timeline-item">
-
-            <h3>
-                Master of Science in Computing and Information Systems
-            </h3>
-
-            <div class="date">
-                Youngstown State University • Youngstown, Ohio
-            </div>
-
-            <p>
-                Expected Fall 2026
-            </p>
-
-            <p>
-                GPA: 3.70 / 4.0
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <h3>
-                Bachelor of Science in Computer Science
-            </h3>
-
-            <div class="date">
-                APJ Abdul Kalam Technological University • Kerala, India
-            </div>
-
-            <p>
-                June 2023
-            </p>
-
-        </div>
-
-
+    <div class="proj">
+      <div class="tag">APJ Abdul Kalam Technological University · Semester 8, 2023</div>
+      <h3>Advanced QR-Coded ID Card System</h3>
+      <ul>
+        <li>Developed responsive web pages using HTML, CSS, and JavaScript for multiple devices.</li>
+        <li>Implemented CRUD operations for managing user profiles and ID card data.</li>
+        <li>Designed and documented database schemas and entity-relationship diagrams.</li>
+        <li>Created data flow diagrams to explain system architecture and workflow.</li>
+      </ul>
     </div>
-
-</section>
-
-
-
-<!-- =========================
-     EXPERIENCE
-========================= -->
-
-<section id="experience">
-
-    <h2 class="section-title">
-        Experience
-    </h2>
-
-
-    <!-- YSU -->
-
-    <div class="experience-card">
-
-        <h3>
-            Graduate Admissions Assistant
-        </h3>
-
-        <div class="company">
-            Youngstown State University — Graduate Admissions Office
-            <br>
-            September 2025 – Present
-        </div>
-
-        <ul>
-
-            <li>
-                Process and review graduate applications to ensure
-                completeness and accuracy.
-            </li>
-
-            <li>
-                Verify and evaluate academic transcripts and
-                supporting documents.
-            </li>
-
-            <li>
-                Upload and manage transcripts and applicant records
-                within the admissions system.
-            </li>
-
-            <li>
-                Handle incoming calls and emails from prospective
-                and current students.
-            </li>
-
-            <li>
-                Resolve application-related issues and provide
-                guidance on admission requirements.
-            </li>
-
-            <li>
-                Coordinate with internal departments to ensure
-                timely application processing.
-            </li>
-
-        </ul>
-
+    <div class="proj">
+      <div class="tag">APJ Abdul Kalam Technological University · Semester 7, 2023</div>
+      <h3>Online Table Reservation System</h3>
+      <ul>
+        <li>Built front-end components using HTML, CSS, and JavaScript.</li>
+        <li>Designed a structured database schema for efficient data storage and retrieval.</li>
+        <li>Developed comprehensive documentation covering requirements, design, and implementation.</li>
+      </ul>
     </div>
+  </div>
+</div></section>
 
-
-
-    <!-- TENZO TECH -->
-
-    <div class="experience-card">
-
-        <h3>
-            AI Developer Intern
-        </h3>
-
-        <div class="company">
-            Tenzo Tech — Ernakulam, Kerala, India
-            <br>
-            July 2023 – February 2024
-        </div>
-
-        <ul>
-
-            <li>
-                Developed websites and implemented automated
-                user-response functionalities.
-            </li>
-
-            <li>
-                Analyzed and processed large datasets using
-                statistical tools and techniques.
-            </li>
-
-            <li>
-                Assisted in designing AI-driven solutions to
-                improve user interaction.
-            </li>
-
-            <li>
-                Prioritized and organized tasks to meet
-                project deadlines efficiently.
-            </li>
-
-        </ul>
-
+<section id="reel"><div class="wrap">
+  <div class="section-head"><h2>Video &amp; Event Reel</h2><span>Shot &amp; edited by Nihal</span></div>
+  <div class="reel-grid">
+    <div class="reel-card wide">
+      <video controls preload="none" poster="/_blob/d1290458d16b41026fdf0ef419c2b363" src="/_blob/51dc9f7ff5c8076bfff357f2d9270d42"></video>
+      <div class="reel-body"><h3>Penguin Productions — Armani White Concert Recap</h3><p>Live-event coverage and edit for Youngstown State's Penguin Productions, cut for social and promotional release.</p></div>
     </div>
-
-
-
-    <!-- PENGUIN PRODUCTIONS -->
-
-    <div class="experience-card">
-
-        <h3>
-            Marketing & Digital Strategy Team Member
-        </h3>
-
-        <div class="company">
-            Youngstown State University — Penguin Productions
-        </div>
-
-        <ul>
-
-            <li>
-                Develop digital marketing strategies to increase
-                campus event attendance and audience engagement.
-            </li>
-
-            <li>
-                Create and manage promotional content across
-                social media platforms.
-            </li>
-
-            <li>
-                Analyze audience engagement and optimize
-                campaigns.
-            </li>
-
-            <li>
-                Collaborate with event planning and production
-                teams.
-            </li>
-
-            <li>
-                Contribute photography and videography content
-                for promotional use.
-            </li>
-
-        </ul>
-
+    <div class="reel-card portrait">
+      <video controls preload="none" poster="/_blob/3276b1986011177fe44512ecccf069b2" src="/_blob/a3a1138ab2b91fb0f134fc3359edd721"></video>
+      <div class="reel-body"><h3>DTS Racing — Motorsport Highlight Edit</h3><p>Trackside coverage and pit-crew footage cut into a vertical highlight reel for DTS Racing.</p></div>
     </div>
-
-
-</section>
-
-
-
-<!-- =========================
-     CURRENT PROJECT
-========================= -->
-
-<section class="gray-section">
-
-    <h2 class="section-title">
-        Current <span>Project</span>
-    </h2>
-
-
-    <div class="featured-project">
-
-        <div class="project-label">
-            August 2026 – December 2026
-        </div>
-
-        <h3>
-            COVID-19 & Blood Type Analysis
-        </h3>
-
-        <p>
-            Youngstown State University
-        </p>
-
-        <p>
-            Research and data analysis project examining the
-            distribution of blood types among individuals
-            diagnosed with COVID-19.
-        </p>
-
-
-        <ul class="project-list">
-
-            <li>
-                Analyze a COVID-19 dataset to examine blood
-                type distributions.
-            </li>
-
-            <li>
-                Perform data cleaning and preprocessing.
-            </li>
-
-            <li>
-                Conduct exploratory data analysis.
-            </li>
-
-            <li>
-                Perform statistical analysis to identify
-                patterns and relationships.
-            </li>
-
-            <li>
-                Compare blood type groups using tables,
-                charts and statistical results.
-            </li>
-
-            <li>
-                Use Python and data analysis libraries for
-                organization, visualization and interpretation.
-            </li>
-
-            <li>
-                Document research findings while recognizing
-                limitations of the available dataset.
-            </li>
-
-        </ul>
-
-
-        <div class="date-badge">
-            Python • Data Analysis • Statistics • Visualization
-        </div>
-
+    <div class="reel-card portrait">
+      <video controls preload="none" poster="/_blob/92b85342e27ee669e39e9f7388a988ec" src="/_blob/43a2b776f49a94a285b9d2475073bd87"></video>
+      <div class="reel-body"><h3>Ducati Panigale V2 — Cinematic Feature</h3><p>Self-shot and edited vertical feature, framed close on the bike with a passing helicopter adding motion to the background.</p></div>
     </div>
-
-</section>
-
-
-
-<!-- =========================
-     OTHER PROJECTS
-========================= -->
-
-<section id="projects">
-
-    <h2 class="section-title">
-        Selected <span>Projects</span>
-    </h2>
-
-
-    <div class="projects">
-
-
-        <div class="project-card">
-
-            <h3>
-                Advanced QR-Coded ID Card System
-            </h3>
-
-            <p>
-                Developed responsive web pages using HTML,
-                CSS and JavaScript for multiple devices.
-                Implemented CRUD operations for user profiles
-                and ID card data.
-            </p>
-
-            <br>
-
-            <p>
-                Designed database schemas, entity-relationship
-                diagrams and data flow diagrams.
-            </p>
-
-        </div>
-
-
-
-        <div class="project-card">
-
-            <h3>
-                Online Table Reservation System
-            </h3>
-
-            <p>
-                Built front-end components using HTML, CSS
-                and JavaScript.
-            </p>
-
-            <br>
-
-            <p>
-                Designed a structured database schema for
-                efficient data storage and retrieval.
-            </p>
-
-            <br>
-
-            <p>
-                Developed documentation covering requirements,
-                design and implementation.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     SKILLS
-========================= -->
-
-<section id="skills" class="gray-section">
-
-    <h2 class="section-title">
-        Technical <span>Skills</span>
-    </h2>
-
-
-    <div class="skills">
-
-        <div class="skill">Python</div>
-
-        <div class="skill">C++</div>
-
-        <div class="skill">JavaScript</div>
-
-        <div class="skill">SQL</div>
-
-        <div class="skill">HTML</div>
-
-        <div class="skill">CSS</div>
-
-        <div class="skill">Web Development</div>
-
-        <div class="skill">Artificial Intelligence</div>
-
-        <div class="skill">Data Analysis</div>
-
-        <div class="skill">Data Cleaning</div>
-
-        <div class="skill">Data Preprocessing</div>
-
-        <div class="skill">Exploratory Data Analysis</div>
-
-        <div class="skill">Statistical Analysis</div>
-
-        <div class="skill">Data Visualization</div>
-
-        <div class="skill">Dataset Analysis</div>
-
-        <div class="skill">Pattern Analysis</div>
-
-        <div class="skill">Database Design</div>
-
-        <div class="skill">CRUD Operations</div>
-
-        <div class="skill">SQL Databases</div>
-
-        <div class="skill">ER Diagrams</div>
-
-        <div class="skill">Data Flow Diagrams</div>
-
-        <div class="skill">Technical Documentation</div>
-
-        <div class="skill">Project Planning</div>
-
-        <div class="skill">Research</div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     PHOTOGRAPHY
-========================= -->
-
-<section>
-
-    <h2 class="section-title">
-        Photography <span>& Video</span>
-    </h2>
-
-    <p class="photo-intro">
-
-        Alongside my technology background, I have experience
-        in photography and videography, including events,
-        portraits, weddings, conferences, marketing content
-        and creative projects.
-
-    </p>
-
-
-    <div class="photo-box">
-
-        <p>
-            Your photography gallery will go here.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     RESUME
-========================= -->
-
-<section class="gray-section">
-
-    <h2 class="section-title">
-        Resume
-    </h2>
-
-    <p class="photo-intro">
-
-        Interested in learning more about my education,
-        professional experience and technical background?
-
-    </p>
-
-
-    <a href="Nihal_Yazin_Shamim_Resume.pdf"
-       class="button"
-       target="_blank">
-
-        View / Download Resume
-
-    </a>
-
-</section>
-
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section id="contact">
-
-    <h2 class="section-title">
-        Let's <span>Connect</span>
-    </h2>
-
-
-    <div class="contact-box">
-
-        <p>
-            📧
-            <a href="mailto:nyshamim@student.ysu.edu">
-                nyshamim@student.ysu.edu
-            </a>
-        </p>
-
-
-        <p>
-            📱
-            <a href="tel:+13307875048">
-                +1 330-787-5048
-            </a>
-        </p>
-
-
-        <p>
-            📍 Youngstown, Ohio, USA
-        </p>
-
-
-        <p>
-            📸
-            <a href="https://www.instagram.com/"
-               target="_blank">
-
-                Instagram
-
-            </a>
-        </p>
-
-
-        <p>
-            💼
-            <a href="https://www.linkedin.com/"
-               target="_blank">
-
-                LinkedIn
-
-            </a>
-        </p>
-
-
-        <p>
-            💻
-            <a href="https://github.com/"
-               target="_blank">
-
-                GitHub
-
-            </a>
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
+  </div>
+  <p class="note">Clips above are compressed preview cuts of the original footage for fast loading; full-resolution masters available on request.</p>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <div class="section-head"><h2>Education</h2></div>
+  <div class="edu">
+    <strong>Youngstown State University</strong> — M.S. Computing and Information Systems, Expected Fall 2026
+    <div class="where">College of Science, Technology, Engineering &amp; Mathematics (STEM) · Overall GPA 3.70/4.0</div>
+  </div>
+  <div class="edu">
+    <strong>APJ Abdul Kalam Technological University</strong> — B.S. Computer Science, June 2023
+    <div class="where">Kerala, India</div>
+  </div>
+</div></section>
 
 <footer>
-
-    <p>
-        © 2026 Nihal Yazin Shamim
-    </p>
-
-    <p>
-        Built with HTML & CSS • Hosted with GitHub Pages
-    </p>
-
+  Nihal Yazin Shamim · <a href="mailto:nyshamim@student.ysu.edu">nyshamim@student.ysu.edu</a> · 330-787-5048
 </footer>
 
-
 </body>
-
 </html>
