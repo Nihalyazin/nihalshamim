@@ -67,4 +67,560 @@ nav .name{font-family:var(--serif);font-size:1.05rem;}
 nav .links{display:flex;gap:22px;font-size:.88rem;color:var(--ink-dim);}
 nav .links a:hover{color:var(--gold);}
 
-/* ============================================
+/* =========================================================
+   HERO (top intro area)
+   ========================================================= */
+.hero{padding:76px 0 54px;border-bottom:1px solid var(--line);}
+.hero-grid{display:grid;grid-template-columns:1fr 240px;gap:36px;align-items:center;}
+@media (max-width:768px){.hero-grid{grid-template-columns:1fr;text-align:center;}}
+
+/* Typing text */
+.hero .kicker {
+  font-size: 1.05rem;
+  color: var(--teal);
+  font-weight: 500;
+  margin-bottom: 12px;
+  min-height: 1.6em;
+}
+.typed-text {
+  border-right: 2px solid var(--teal);
+  white-space: nowrap;
+  animation: blink-caret 0.75s step-end infinite;
+  padding-right: 2px;
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--teal); }
+}
+
+.hero h1{font-size:clamp(2.3rem,5vw,3.4rem);line-height:1.05;}
+.hero p{max-width:56ch;color:var(--ink-dim);font-size:1.08rem;margin-top:14px;}
+@media (max-width:768px){.hero p{margin-left:auto;margin-right:auto;}}
+
+.hero-photo-wrap{position:relative;width:100%;max-width:240px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:0 10px 30px rgba(0,0,0,0.3);}
+@media (max-width:768px){.hero-photo-wrap{margin:24px auto 0;}}
+.hero-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.contact-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:.92rem;color:var(--ink-dim); align-items:center;}
+@media (max-width:768px){.contact-row{justify-content:center;}}
+.contact-row a:hover{color:var(--gold);}
+
+/* Social icon buttons */
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+@media (max-width:768px){.social-links{justify-content:center;}}
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--ink-dim);
+  transition: all 0.2s ease;
+  background: var(--card);
+}
+.social-links a:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.15);
+}
+
+/* =========================================================
+   SECTIONS (Skills, Experience, Projects, Reel, Education)
+   ========================================================= */
+section{padding:56px 0;border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;}
+.section-head span{font-size:.85rem;color:var(--ink-dim);}
+
+/* Skills */
+.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media (max-width:640px){.skill-grid{grid-template-columns:1fr;}}
+.skill-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px 24px;}
+.skill-card h3{font-size:1.05rem;color:var(--gold);}
+.skill-card p{margin:0;color:var(--ink-dim);font-size:.95rem;}
+
+/* Experience */
+.xp{margin-bottom:34px;}
+.xp:last-child{margin-bottom:0;}
+.xp-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.xp-head strong{font-size:1.05rem;}
+.xp-head time{color:var(--ink-dim);font-size:.88rem;white-space:nowrap;}
+.xp-role{color:var(--teal);font-size:.92rem;margin-bottom:10px;}
+.xp ul{margin:0;padding-left:1.1em;color:var(--ink-dim);font-size:.95rem;}
+.xp li{margin-bottom:5px;}
+.xp-media{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+@media (max-width:640px){.xp-media{grid-template-columns:1fr;}}
+.xp-media figure{margin:0;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:#000;}
+.xp-media video,.xp-media img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;}
+.xp-media figcaption{padding:9px 12px;font-size:.82rem;color:var(--ink-dim);border-top:1px solid var(--line);}
+
+/* Projects */
+.proj-grid{display:grid;grid-template-columns:1fr;gap:18px;}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px 26px;}
+.proj .tag{color:var(--ink-dim);font-size:.82rem;margin-bottom:6px;}
+.proj h3{font-size:1.12rem;margin-bottom:8px;}
+.proj ul{margin:0;padding-left:1.1em;color:var(--ink-dim);font-size:.93rem;}
+.proj li{margin-bottom:4px;}
+
+/* Video reel */
+.reel-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media (max-width:640px){.reel-grid{grid-template-columns:1fr;}}
+.reel-card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.reel-card.wide{grid-column:1/-1;}
+.reel-card video{width:100%;display:block;background:#000;aspect-ratio:16/9;}
+.reel-card.portrait video{aspect-ratio:9/16;max-height:70vh;margin:0 auto;}
+.reel-body{padding:16px 18px;}
+.reel-body h3{font-size:1rem;margin-bottom:4px;}
+.reel-body p{margin:0;color:var(--ink-dim);font-size:.9rem;}
+
+/* Education */
+.edu{margin-bottom:22px;}
+.edu:last-child{margin-bottom:0;}
+.edu strong{font-size:1.02rem;}
+.edu .where{color:var(--ink-dim);font-size:.9rem;}
+
+/* Footer */
+footer{padding:40px 0 calc(50px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--ink-dim);font-size:.88rem; display:flex; flex-direction:column; gap:16px; align-items:center;}
+footer a:hover{color:var(--gold);}
+.note{font-size:.82rem;color:var(--ink-dim);margin-top:10px;}
+
+/* =========================================================
+   INTRO ANIMATION (black screen + logo + curtain opening)
+   ========================================================= */
+body.intro-lock{overflow:hidden;}               /* no scrolling during the intro */
+#intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;}
+#intro.open{pointer-events:none;}
+
+/* The two black halves that slide apart */
+.intro-panel{position:absolute;left:0;width:100%;height:calc(50% + 1px);background:#000;
+  transition:transform 1.1s cubic-bezier(.76,0,.24,1);}   /* 1.1s = curtain speed */
+.intro-top{top:0;}
+.intro-bottom{bottom:0;}
+#intro.open .intro-top{transform:translateY(-100%);}
+#intro.open .intro-bottom{transform:translateY(100%);}
+
+/* Logo + gold line */
+.intro-center{position:relative;z-index:1;text-align:center;}
+.intro-logo{display:block;width:min(260px,60vw);margin:0 auto;          /* 260px = logo size */
+  opacity:0;transform:scale(.92);filter:blur(14px);
+  transition:opacity 1.4s ease, transform 2.2s cubic-bezier(.2,.7,.2,1), filter 1.4s ease;}
+.intro-line{position:relative;width:min(260px,60vw);height:1px;margin:30px auto 0;
+  background:rgba(255,255,255,.14);overflow:hidden;}
+.intro-line::after{content:"";position:absolute;inset:0;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform 2s cubic-bezier(.6,0,.2,1);}
+
+/* Stages: JavaScript adds these class names one by one */
+#intro.show .intro-logo{opacity:1;transform:scale(1);filter:blur(0);}
+#intro.show .intro-line::after{transform:scaleX(1);}
+#intro.leave .intro-logo{opacity:0;transform:scale(1.08);filter:blur(8px);transition-duration:.6s;}
+#intro.leave .intro-line{opacity:0;transition:opacity .4s ease;}
+
+/* Skip button */
+#intro-skip{position:absolute;z-index:2;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  background:none;border:0;color:rgba(255,255,255,.45);font:500 .82rem var(--sans);
+  cursor:pointer;padding:8px 10px;transition:opacity .3s ease,color .2s ease;}
+#intro-skip:hover,#intro-skip:focus-visible{color:#fff;}
+#intro.open #intro-skip{opacity:0;}
+
+/* The site fades up after the curtain opens */
+nav,.hero .wrap{transition:opacity 1s ease .5s, transform 1.2s cubic-bezier(.2,.7,.2,1) .5s;}
+body.intro-lock nav{opacity:0;}
+body.intro-lock .hero .wrap{opacity:0;transform:translateY(28px);}
+</style>
+</head>
+
+<body class="intro-lock">
+
+<!-- INTRO (black screen with your logo). The logo file must be in the same folder as this file. -->
+<div id="intro">
+  <div class="intro-panel intro-top"></div>
+  <div class="intro-panel intro-bottom"></div>
+  <div class="intro-center">
+    <img src="nihal-logo-png.png" alt="Nihal Yazin logo" class="intro-logo">
+    <div class="intro-line"></div>
+  </div>
+  <button id="intro-skip" type="button">Skip</button>
+</div>
+
+<!-- Floating dots background (drawn by JavaScript at the bottom) -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVIGATION BAR -->
+<nav><div class="wrap">
+  <div class="name">Nihal Yazin Shamim</div>
+  <div class="links">
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#reel">Reel</a><a href="#education">Education</a>
+  </div>
+</div></nav>
+
+<!-- HERO (name, intro paragraph, photo, contact) -->
+<header class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker"><span class="typed-text" id="typed"></span></div>
+      <h1>Hi, I am Nihal Shamim.</h1>
+      <p>M.S. Computing &amp; Information Systems candidate and Software Developer who works comfortably across software development, AI/ML, and data analysis. Currently focused on building deep learning models for image segmentation and developing Python-based desktop applications with SQL integration. Always passionate about learning new technologies and tackling complex challenges.</p>
+
+      <div class="contact-row">
+        <span>Canfield, OH</span>
+        <span>330-787-5048</span>
+        <a href="mailto:nyshamim@student.ysu.edu">nyshamim@student.ysu.edu</a>
+      </div>
+
+      <!-- Social links (there is a second copy in the footer) -->
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/nihal-yazin-shamim-a70b0b292" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/nihalyazin/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="photo.jpg" alt="Nihal Yazin Shamim">
+    </div>
+  </div>
+</div></header>
+
+<!-- SKILLS (one skill-card box per category) -->
+<section id="about"><div class="wrap">
+  <div class="section-head"><h2>Skills</h2></div>
+  <div class="skill-grid">
+    <div class="skill-card"><h3>Programming Languages</h3><p>Python, C++, JavaScript, SQL</p></div>
+    <div class="skill-card"><h3>Web Development</h3><p>HTML, CSS, Responsive Web Design, CRUD Operations</p></div>
+    <div class="skill-card"><h3>Databases</h3><p>Database Design, Entity-Relationship Modeling</p></div>
+    <div class="skill-card"><h3>Data Science &amp; Analysis</h3><p>Data Cleaning, Exploratory Data Analysis (EDA), Statistical Testing (Chi-Square), Data Visualization</p></div>
+    <div class="skill-card"><h3>AI-Assisted Tools</h3><p>AI-Assisted Data Analysis, Gradio</p></div>
+    <div class="skill-card"><h3>Creative &amp; Media Production</h3><p>Event Videography, Video Editing, Highlight-Reel Production, Photography, Social Content Creation</p></div>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE (one <div class="xp"> block per job) -->
+<section id="experience"><div class="wrap">
+  <div class="section-head"><h2>Experience</h2></div>
+
+  <div class="xp">
+    <div class="xp-head"><strong>Youngstown State University — Penguin Productions</strong><time>Sep 2025 – Present</time></div>
+    <div class="xp-role">Marketing &amp; Digital Strategy Team Member</div>
+    <ul>
+      <li>Develop and implement digital marketing strategies to increase campus event attendance and audience engagement.</li>
+      <li>Shot and edited on-campus event coverage, including recap footage from the Armani White concert, for social and promotional use.</li>
+      <li>Create and manage promotional content across social media platforms to expand brand visibility.</li>
+      <li>Analyze audience engagement metrics and optimize campaigns to improve outreach performance.</li>
+      <li>Collaborate with event planning and production teams to design targeted marketing campaigns.</li>
+      <li>Support brand growth initiatives by identifying trends and improving digital presence.</li>
+    </ul>
+    <div class="xp-media">
+      <figure>
+        <!-- CONCERT VIDEO: change the file name in src="..." if you rename it -->
+        <video autoplay muted loop playsinline preload="auto" src="final edit.mp4"></video>
+        <figcaption>Edit sample — Armani White concert recap, Penguin Productions</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="xp">
+    <div class="xp-head"><strong>Youngstown State University — Graduate Admissions Office</strong><time>Sep 2025 – Present</time></div>
+    <div class="xp-role">Graduate Admissions Assistant</div>
+    <ul>
+      <li>Process and review graduate applications to ensure completeness and accuracy.</li>
+      <li>Verify and evaluate academic transcripts and supporting documents.</li>
+      <li>Upload and manage transcripts and applicant records within the admissions system.</li>
+      <li>Attend and handle incoming calls and emails from prospective and current students.</li>
+      <li>Resolve application-related issues and provide guidance on admission requirements.</li>
+      <li>Coordinate with internal departments to ensure timely application processing.</li>
+    </ul>
+  </div>
+
+  <div class="xp">
+    <div class="xp-head"><strong>Tenzo Tech</strong>, Ernakulam, Kerala<time>Jul 2023 – Feb 2024</time></div>
+    <div class="xp-role">AI Developer Intern</div>
+    <ul>
+      <li>Developed websites and implemented automated user-response functionalities.</li>
+      <li>Analyzed and processed large datasets using statistical tools and techniques.</li>
+      <li>Assisted in designing AI-driven solutions to improve user interaction.</li>
+      <li>Prioritized and organized tasks to meet project deadlines efficiently.</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- PROJECTS (one <div class="proj"> block per project) -->
+<section id="projects"><div class="wrap">
+  <div class="section-head"><h2>Academic Projects</h2></div>
+  <div class="proj-grid">
+    <div class="proj">
+      <div class="tag">Youngstown State University · Aug 2026 – Dec 2026 · Current</div>
+      <h3>AI-Assisted Blood Type &amp; COVID-19 Data Analysis</h3>
+      <ul>
+        <li>Designed a data-analysis pipeline investigating potential associations between ABO/Rh blood groups and COVID-19 status using a de-identified public dataset.</li>
+        <li>Performed data cleaning, exploratory data analysis, and subset creation ahead of statistical comparison.</li>
+        <li>Applied chi-square testing to compare COVID-positive proportions across blood groups while accounting for confounders.</li>
+        <li>Used AI-assisted workflows to generate and validate data-processing code and interpret statistical output.</li>
+        <li>Built a private, local Gradio interface to visualize blood-group/COVID-19 comparisons.</li>
+      </ul>
+    </div>
+    <div class="proj">
+      <div class="tag">APJ Abdul Kalam Technological University · Semester 8, 2023</div>
+      <h3>Advanced QR-Coded ID Card System</h3>
+      <ul>
+        <li>Developed responsive web pages using HTML, CSS, and JavaScript for multiple devices.</li>
+        <li>Implemented CRUD operations for managing user profiles and ID card data.</li>
+        <li>Designed and documented database schemas and entity-relationship diagrams.</li>
+        <li>Created data flow diagrams to explain system architecture and workflow.</li>
+      </ul>
+    </div>
+    <div class="proj">
+      <div class="tag">APJ Abdul Kalam Technological University · Semester 7, 2023</div>
+      <h3>Online Table Reservation System</h3>
+      <ul>
+        <li>Built front-end components using HTML, CSS, and JavaScript.</li>
+        <li>Designed a structured database schema for efficient data storage and retrieval.</li>
+        <li>Developed comprehensive documentation covering requirements, design, and implementation.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- VIDEO REEL -->
+<section id="reel"><div class="wrap">
+  <div class="section-head"><h2>Video &amp; Event Reel</h2><span>Shot &amp; edited by Nihal</span></div>
+  <div class="reel-grid">
+    <div class="reel-card wide">
+      <!-- CONCERT VIDEO -->
+      <video autoplay muted loop playsinline preload="auto" src="final edit.mp4"></video>
+      <div class="reel-body"><h3>Penguin Productions — Armani White Concert Recap</h3><p>Live-event coverage and edit for Youngstown State's Penguin Productions, cut for social and promotional release.</p></div>
+    </div>
+    <div class="reel-card portrait">
+      <!-- DTS VIDEO -->
+      <video autoplay muted loop playsinline preload="auto" src="dts 2.mp4"></video>
+      <div class="reel-body"><h3>DTS Racing — Motorsport Highlight Edit</h3><p>Trackside coverage and pit-crew footage cut into a vertical highlight reel for DTS Racing.</p></div>
+    </div>
+    <div class="reel-card portrait">
+      <!-- DUCATI VIDEO -->
+      <video autoplay muted loop playsinline preload="auto" src="ALDUCATI V2 (1).mp4"></video>
+      <div class="reel-body"><h3>Ducati Panigale V2 — Cinematic Feature</h3><p>Self-shot and edited vertical feature, framed close on the bike with a passing helicopter adding motion to the background.</p></div>
+    </div>
+  </div>
+  <p class="note">Clips above are compressed preview cuts of the original footage for fast loading; full-resolution masters available on request.</p>
+</div></section>
+
+<!-- EDUCATION -->
+<section id="education"><div class="wrap">
+  <div class="section-head"><h2>Education</h2></div>
+  <div class="edu">
+    <strong>Youngstown State University</strong> — M.S. Computing and Information Systems, Expected Fall 2026
+    <div class="where">College of Science, Technology, Engineering &amp; Mathematics (STEM) · Overall GPA 3.70/4.0</div>
+  </div>
+  <div class="edu">
+    <strong>APJ Abdul Kalam Technological University</strong> — B.S. Computer Science, June 2023
+    <div class="where">Kerala, India</div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    Nihal Yazin Shamim · <a href="mailto:nyshamim@student.ysu.edu">nyshamim@student.ysu.edu</a> · 330-787-5048
+  </div>
+  <div class="social-links" style="margin-top: 0;">
+    <a href="https://www.linkedin.com/in/nihal-yazin-shamim-a70b0b292" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+        <rect x="2" y="9" width="4" height="12"></rect>
+        <circle cx="4" cy="4" r="2"></circle>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/nihalyazin/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT PART 1: typing text + floating dots -->
+<script>
+/* ---------- Typing effect ---------- */
+/* Edit the phrases below. Keep the quotes, and a comma after every line except the last. */
+const words = [
+  "Currently pursuing M.S. in Computing & Information Systems...",
+  "Graduating in December 2026",
+  "Data-driven builder with a videographer's eye",
+  "Tech Enthusiast & Digital Creator"
+];
+let i = 0;
+let timer;
+
+function typingEffect() {
+  let word = words[i].split("");
+  var loopTyping = function() {
+    if (word.length > 0) {
+      document.getElementById('typed').innerHTML += word.shift();
+    } else {
+      setTimeout(deletingEffect, 2000);   // how long a phrase stays on screen (ms)
+      return false;
+    }
+    timer = setTimeout(loopTyping, 80);   // typing speed (ms per letter)
+  };
+  loopTyping();
+}
+
+function deletingEffect() {
+  let word = words[i].split("");
+  var loopDeleting = function() {
+    if (word.length > 0) {
+      word.pop();
+      document.getElementById('typed').innerHTML = word.join("");
+    } else {
+      if (words.length > (i + 1)) {
+        i++;
+      } else {
+        i = 0;
+      }
+      setTimeout(typingEffect, 500);
+      return false;
+    }
+    timer = setTimeout(loopDeleting, 40); // deleting speed (ms per letter)
+  };
+  loopDeleting();
+}
+
+/* NOTE: typingEffect() is no longer called here.
+   The intro script below starts it once the curtain opens. */
+
+/* ---------- Floating dots background ---------- */
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+let particles = [];
+
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Number of dots: 60 on desktop, 30 on phones
+const particleCount = Math.min(window.innerWidth > 768 ? 60 : 30, 80);
+for (let i = 0; i < particleCount; i++) {
+  particles.push({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+    radius: Math.random() * 1.5 + 0.5
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  ctx.fillStyle = 'rgba(201, 162, 75, 0.35)';    // dot color
+  ctx.strokeStyle = 'rgba(74, 143, 160, 0.12)';  // line color
+  ctx.lineWidth = 1;
+
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    if (p.y < 0) p.y = height;
+    if (p.y > height) p.y = 0;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Connect nearby dots
+    for (let j = i + 1; j < particles.length; j++) {
+      let p2 = particles[j];
+      let dx = p.x - p2.x;
+      let dy = p.y - p2.y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 120) {   // connection distance in pixels
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Fade the dots as the visitor scrolls down
+window.addEventListener('scroll', () => {
+  let scrollTop = window.scrollY;
+  let maxScroll = 800;
+  let opacity = Math.max(0.1, 1 - (scrollTop / maxScroll));
+  canvas.style.opacity = opacity;
+});
+</script>
+
+<!-- JAVASCRIPT PART 2: the intro sequence -->
+<script>
+(function(){
+  const intro = document.getElementById('intro');
+  if(!intro) return;
+
+  // Timing in milliseconds: edit these to speed up or slow down
+  const SHOW_AT  = 300;   // logo starts fading in
+  const LEAVE_AT = 2600;  // logo fades out
+  const OPEN_AT  = 3100;  // black screen splits open
+
+  let started = false, done = false;
+  const timers = [];
+
+  function startSite(){
+    if(started) return; started = true;
+    document.body.classList.remove('intro-lock');   // unlock scroll + reveal the site
+    if(typeof typingEffect === 'function') typingEffect();
+  }
+
+  function finish(){
+    if(done) return; done = true;
+    timers.forEach(clearTimeout);
+    intro.classList.add('show','leave','open');
+    startSite();
+    setTimeout(() => intro.remove(), 1400);          // remove the intro after it finishes
+  }
+
+  // Visitors who prefer reduced motion skip the intro
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    intro.remove(); startSite(); return;
+  }
+
+  timers.push(setTimeout(() => intro.classList.add('show'),  SHOW_AT));
+  timers.push(setTimeout(() => intro.classList.add('leave'), LEAVE_AT));
+  timers.push(setTimeout(finish, OPEN_AT));
+  document.getElementById('intro-skip').addEventListener('click', finish);
+})();
+</script>
+
+</body>
+</html>
